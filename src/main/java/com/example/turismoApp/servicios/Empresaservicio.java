@@ -4,10 +4,13 @@ import com.example.turismoApp.Validaciones.EmpresaValidacion;
 import com.example.turismoApp.modelos.Empresa;
 import com.example.turismoApp.repositorios.Empresarepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+
+@Service
 public class Empresaservicio {
 
     @Autowired
