@@ -1,10 +1,9 @@
 package com.example.turismoApp.Controladores;
 
-import com.example.turismoApp.modelos.Empresa;
 import com.example.turismoApp.modelos.Oferta;
-import com.example.turismoApp.servicios.Empresaservicio;
-import com.example.turismoApp.servicios.Ofertaservicio;
+import com.example.turismoApp.servicios.OfertaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,31 +16,71 @@ public class OfertaControladores {
 
 
     @Autowired
-    Ofertaservicio ofertaservicio;
+    OfertaServicio ofertaservicio;
 
     @PostMapping
     public ResponseEntity<?> registrarOferta(@RequestBody Oferta datosOferta){
-        return null;
+        try {
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(this.ofertaservicio.registrarOferta(datosOferta));
+        }catch (Exception error){
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(error.getMessage());
+        }
     }
 
-    @PutMapping
+    @PutMapping ("{idOferta}")
     public  ResponseEntity<?> editarOferta(@RequestBody Oferta datosNuevosOferta,@PathVariable Integer idOferta){
-        return null;
+        try {
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(this.ofertaservicio.modificarOferta(idOferta,datosNuevosOferta));
+        }catch (Exception error){
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(error.getMessage());
+        }
     }
 
-    @GetMapping
+    @GetMapping("{id}")
     public ResponseEntity<?> buscarUnaOferta(@PathVariable Integer id){
-        return null;
+        try {
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(this.ofertaservicio.buscarOfertaPorId(id));
+        }catch (Exception error){
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(error.getMessage());
+        }
     }
 
     @GetMapping
     public ResponseEntity<?> buscarTodasOferta(){
-        return null;
+        try {
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(this.ofertaservicio.buscarTodasLasOferta());
+        }catch (Exception error){
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(error.getMessage());
+        }
     }
 
-    @DeleteMapping
+    @DeleteMapping("{id}")
     public ResponseEntity<?> borrarOferta(@PathVariable Integer id){
-        return null;
+        try {
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(this.ofertaservicio.eliminarOferta(id));
+        }catch (Exception error){
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(error.getMessage());
+        }
     }
 
 

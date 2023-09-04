@@ -1,6 +1,5 @@
 package com.example.turismoApp.servicios;
 
-import com.example.turismoApp.modelos.Empresa;
 import com.example.turismoApp.modelos.Oferta;
 import com.example.turismoApp.repositorios.Ofertarepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class Ofertaservicio {
+public class OfertaServicio {
 
     @Autowired
     Ofertarepositorio ofertarepositorio;

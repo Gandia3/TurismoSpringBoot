@@ -11,7 +11,7 @@ import java.util.Optional;
 
 
 @Service
-public class Empresaservicio {
+public class EmpresaServicio {
 
     @Autowired
     Empresarepositorio empresarepositorio;
